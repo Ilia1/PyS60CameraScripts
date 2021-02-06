@@ -134,6 +134,12 @@ def _handle_request_in_UI_thread(self, channel, method, path, header):
 				flash = "none"
 				if "&flash=forced" in "&"+"&".join(params):
 					flash = "forced"
+				if "&picSize=1600" in "&"+"&".join(params):
+					size = (1600,1200)
+				if "&picSize=1024" in "&"+"&".join(params):
+					size = (1024,768)
+				if "&picSize=640" in "&"+"&".join(params):
+					size = (640,480)
 				appuifw.app.orientation = 'landscape'
 				take_picture(filename, size, flash)
 				file = open(filename, "rb")
